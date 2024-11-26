@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../config';
 
 const Login = () => {
   const [text, setText] = useState({
@@ -28,7 +29,7 @@ const Login = () => {
   
     try {
       // Normal login flow for admin and users
-      const response = await axios.post('http://localhost:3001/login', text);
+      const response = await axios.post(`${config.apiBaseUrl}/login`, text);
       const { token, role } = response.data;
   
       if (token) {
