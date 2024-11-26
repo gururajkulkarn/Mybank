@@ -13,7 +13,7 @@ const SuperAdmin = () => {
   const token = localStorage.getItem('token');
 
   // Axios configuration for authorization headers
-  const config = {
+  const axiosconfig = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -81,7 +81,7 @@ const SuperAdmin = () => {
 
   useEffect(() => {
 
-    axios.get(`${config.apiBaseUrl}/admins`, config)
+    axios.get(`${config.apiBaseUrl}/admins`, axiosconfig)
       .then((response) => {
         console.log(response.data)
         setData(response.data)
