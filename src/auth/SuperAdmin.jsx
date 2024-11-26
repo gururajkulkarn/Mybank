@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SuperAdminSidebar from '../SuperAdminSidebar'
 import Header from "../Header";
+import config from 'config';
 
 const SuperAdmin = () => {
 
@@ -50,7 +51,7 @@ const SuperAdmin = () => {
     const token = localStorage.getItem('token'); // Get the token from local storage
 
     try {
-      const response = await axios.post('http://localhost:3001/createAdmin', adminData, {
+      const response = await axios.post(`${config.apiBaseUrl}/createAdmin`, adminData, {
         headers: {
           Authorization: `Bearer ${token}` // Include the token in the header
         }
@@ -80,7 +81,7 @@ const SuperAdmin = () => {
 
   useEffect(() => {
 
-    axios.get("http://localhost:3001/admins", config)
+    axios.get(`${config.apiBaseUrl}/admins`, config)
       .then((response) => {
         console.log(response.data)
         setData(response.data)
