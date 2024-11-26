@@ -51,11 +51,7 @@ const SuperAdmin = () => {
     const token = localStorage.getItem('token'); // Get the token from local storage
 
     try {
-      const response = await axios.post(`${config.apiBaseUrl}/createAdmin`, adminData, {
-        headers: {
-          Authorization: `Bearer ${token}` // Include the token in the header
-        }
-      });
+      const response = await axios.post(`${config.apiBaseUrl}/createAdmin`, adminData, axiosconfig);
 
       console.log(response.data); // Log the response for debugging
       alert("Admin created successfully!");
