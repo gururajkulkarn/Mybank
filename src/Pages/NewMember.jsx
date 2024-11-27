@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from "../Sidebar";
 import Header from "../Header";
 import axios from 'axios'
+import config from '../config';
 
 const NewMember = () => {
 
@@ -25,7 +26,7 @@ const NewMember = () => {
         // Retrieve the token from local storage
         const token = localStorage.getItem('token');
 
-        axios.post('http://localhost:3001/newMember', text, {
+        axios.post(`${config.apiBaseUrl}/newMember`, text, {
             headers: {
                 Authorization: `Bearer ${token}` // Include the token in the Authorization header
             }

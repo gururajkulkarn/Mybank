@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../config';
 
 const Register = () => {
   const [text, setText] = useState({
@@ -17,7 +18,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/createRegister', text);
+      const response = await axios.post(`${config.apiBaseUrl}/createRegister`, text);
       alert("Registered successfully!");
       setText({
         fname: '',

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from "../Sidebar";
 import Header from "../Header";
 import axios from 'axios';
+import config from '../config';
+
 const AdminAction = () => {
     const [data, setData] = useState([]); // Stores new member data
     const [loandata, setLoandata] = useState([]); // Stores Long Loan data
@@ -36,7 +38,7 @@ const AdminAction = () => {
 
     const token = localStorage.getItem('token');
 
-    const config = {
+    const axiosconfig = {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -46,7 +48,7 @@ const AdminAction = () => {
 
     const fetchNewMembers = async () => {
         try {
-            const response = await axios.get("http://localhost:3001/allMember", config);
+            const response = await axios.get(`${config.apiBaseUrl}/allMember`, axiosconfig);
             setData(response.data);
             console.log("New members fetched successfully:", response.data);
         } catch (error) {
@@ -56,7 +58,7 @@ const AdminAction = () => {
 
     const fetchShortLoan = async () => {
         try {
-            const response = await axios.get("http://localhost:3001/shortloan", config);
+            const response = await axios.get(`${config.apiBaseUrl}/shortloan`, axiosconfig);
             setSloandata(response.data);
             console.log("Short loans fetched successfully:", response.data);
         } catch (error) {
@@ -66,7 +68,7 @@ const AdminAction = () => {
 
     const fetchLongLoan = async () => {
         try {
-            const response = await axios.get("http://localhost:3001/longloan", config);
+            const response = await axios.get(`${config.apiBaseUrl}/longloan`, axiosconfig);
             setLoandata(response.data);
             console.log("Long loans fetched successfully:", response.data);
         } catch (error) {
@@ -135,7 +137,7 @@ const AdminAction = () => {
         if (value === "Loan Closed") {
             // Update the backend to reset the short loan data for this member
             try {
-                await axios.put(`http://localhost:3001/resetShortLoan/${memberno}`, {
+                await axios.put(`${config.apiBaseUrl}/resetShortLoan/${memberno}`, {
                     loanamount: 0,
                     duration: 0,
                     interest: 0,
@@ -162,7 +164,7 @@ const AdminAction = () => {
         if (value === "Loan Closed") {
             // Update the backend to reset the short loan data for this member
             try {
-                await axios.put(`http://localhost:3001/resetLongLoan/${memberno}`, {
+                await axios.put(`${config.apiBaseUrl}/resetLongLoan/${memberno}`, {
                     loanamount: 0,
                     duration: 0,
                     principal: 0,
@@ -305,7 +307,7 @@ const AdminAction = () => {
             const memberLoanData = loanData[user.memberno] || {}; // Get the loan data for this specific member
 
             const response = await axios.post(
-                'http://localhost:3001/monthlydata',
+                `${config.apiBaseUrl}/monthlydata`,
                 {
                     memberno: user.memberno,
                     fullname: user.fullname,

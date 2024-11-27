@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../config'
 
 const LongLoan = ({ member }) => {
     const [text, setText] = useState({
@@ -27,7 +28,7 @@ const LongLoan = ({ member }) => {
           // Retrieve the token from local storage
     const token = localStorage.getItem('token');
     
-        axios.post('http://localhost:3001/longloan', text, {
+        axios.post(`${config.apiBaseUrl}/longloan`, text, {
             headers: {
                 Authorization: `Bearer ${token}` // Include the token in the Authorization header
             }

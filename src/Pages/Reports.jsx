@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Sidebar from "../Sidebar";
 import Header from "../Header";
+import config from '../config';
 
 const Reports = () => {
 
@@ -17,7 +18,7 @@ const Reports = () => {
     const fetchMonthlyData = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:3001/monthlyReports', {
+            const response = await axios.get(`${config.apiBaseUrl}/monthlyReports`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../config';
 
 const ShortLoan = ({ member }) => {
     const [text, setText] = useState({
@@ -27,7 +28,7 @@ const ShortLoan = ({ member }) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
 
-        axios.post('http://localhost:3001/shortloan', text, {
+        axios.post(`${config.apiBaseUrl}/shortloan`, text, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Sidebar from "../Sidebar";
 import Header from "../Header";
-import axios from 'axios'
+import axios from 'axios';
+import config from '../config';
 
 const FinantialSettings = () => {
 
@@ -12,7 +13,7 @@ const FinantialSettings = () => {
     })
     const handlesubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/financeSetting', text)
+        axios.post(`${config.apiBaseUrl}/financeSetting`, text)
             .then((response) => {
                 console.log(response.text)
                 alert("Finantial setting successfull..")

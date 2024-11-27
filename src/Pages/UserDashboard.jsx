@@ -4,6 +4,7 @@ import {jsPDF} from 'jspdf'
 import "jspdf-autotable"; // Import the autotable extension
 import UserSidebar from "../UserSidebar";
 import Header from "../Header";
+import config from '../config';
 
 const UserDashboard = () => {
 
@@ -19,7 +20,7 @@ const UserDashboard = () => {
     const fetchMonthlyData = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:3001/usermonthlydata', {
+            const response = await axios.get(`${config.apiBaseUrl}/usermonthlydata`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

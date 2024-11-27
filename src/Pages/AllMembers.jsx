@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ShortLoan from './ShortLoan';
 import LongLoan from './LongLoan';
+import config from '../config';
 
 const AllMembers = () => {
     const [data, setData] = useState([]);
@@ -12,7 +13,7 @@ const AllMembers = () => {
 const token = localStorage.getItem('token');
 
 // Axios configuration for authorization headers
-const config = {
+const axiosconfig = {
     headers: {
         Authorization: `Bearer ${token}`,
     },
@@ -20,7 +21,7 @@ const config = {
 
 
     useEffect(() => {
-        axios.get("http://localhost:3001/allMember", config)
+        axios.get(`${config.apiBaseUrl}/allMember`, axiosconfig)
             .then((response) => {
                 console.log(response.data);
                 setData(response.data);
