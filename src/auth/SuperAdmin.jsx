@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SuperAdminSidebar from '../SuperAdminSidebar'
 import Header from "../Header";
-import config from 'config';
+import config from '../config';
+
 
 const SuperAdmin = () => {
 
