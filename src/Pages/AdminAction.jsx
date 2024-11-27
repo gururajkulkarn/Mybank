@@ -144,7 +144,7 @@ const AdminAction = () => {
                     emiamount: 0,
                     month: 0,
                     year: 0,
-                }, config);
+                }, axiosconfig);
 
                 console.log(`Short loan data reset for member: ${memberno}`);
                 // Optionally fetch the updated data again to reflect the reset values
@@ -174,7 +174,7 @@ const AdminAction = () => {
                     loanoutst:0,
                     month: 0,
                     year: 0,
-                }, config);
+                }, axiosconfig);
 
                 console.log(`Short loan data reset for member: ${memberno}`);
                 // Optionally fetch the updated data again to reflect the reset values
@@ -336,7 +336,7 @@ const AdminAction = () => {
                     penaltyFee: penaltyFees[user.memberno] || 0,
                     cmonthYear: cmonthYear[user.memberno] || 0,
                 },
-                config
+                axiosconfig
             );
 
             console.log('New data saved for a different month/year:', response.data);
