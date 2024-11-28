@@ -376,7 +376,7 @@ const AdminAction = () => {
                             <th scope="col">Short Loan Emi Amount</th>
                             <th scope="col">Short Loan Status</th>
                             <th scope="col">Long Loan Amount</th>
-                            <th scope="col">Long Loan Sanctioned (M-Y)</th>
+                            {/* <th scope="col">Long Loan Sanctioned (M-Y)</th> */}
                             <th scope="col">Long Loan Duration</th>
                             <th scope="col">Long Loan Principle</th>
                             <th scope="col">Long Loan Interest</th>
@@ -413,7 +413,7 @@ const AdminAction = () => {
                                     <select value={loanstatus[user.memberno] || ''}
                                         onChange={(e) => handleLoanStatus(user.memberno, e.target.value)} >
                                         <option value="Select">Select</option>
-                                        <option value="Emi Paid">Emi Paid</option>
+                                        <option value="Paid">Paid</option>
                                         <option value="Pending">Pending</option>
                                         <option value="Active">Active</option>
                                         <option value="Loan Closed">Loan Closed</option>
@@ -427,8 +427,9 @@ const AdminAction = () => {
                                     onChange={(e) => handleLoanAmountChange(user.memberno, e)}
                                 />
                                 </td>
-                                <td>{longLoanMapping[user.memberno]?.month || ''}-{longLoanMapping[user.memberno]?.year || ''}</td>
-                                <td><input
+                                {/* <td>{longLoanMapping[user.memberno]?.month || ''}-{longLoanMapping[user.memberno]?.year || ''}</td>
+                                */}
+                                <td><input 
                                     type="text"
                                     name="duration"
                                     value={loanData[user.memberno]?.duration || ''}
