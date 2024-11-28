@@ -60,7 +60,7 @@ function App() {
           <Route path="/user" element={<UserDashboard />} />
 
           {/* 404 Error Page for unmatched routes */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Login />} />
 
           {/* Extra Routes */}
           {/* <Route path="/newcontact" element={<NewContact />} /> */}
